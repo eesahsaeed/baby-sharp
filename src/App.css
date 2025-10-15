@@ -1,0 +1,38 @@
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #f9f9f9;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.my-masonry-grid {
+  display: flex;
+  margin-left: -16px;
+  width: auto;
+}
+
+.my-masonry-grid_column {
+  padding-left: 16px;
+  background-clip: padding-box;
+}
+
+
+.my-masonry-grid {
+  display: flex;
+  margin-left: -16px; /* gutter size offset */
+  width: auto;
+}
+.my-masonry-grid_column {
+  padding-left: 16px; /* gutter size */
+  background-clip: padding-box;
+}
+.my-masonry-grid_column > div {
+  margin-bottom: 16px;
+}
