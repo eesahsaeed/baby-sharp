@@ -3,10 +3,9 @@ import * as React from "react";
 import { AppProvider } from "@toolpad/core/AppProvider";
 import { DashboardLayout } from "@toolpad/core/DashboardLayout";
 import { PageContainer } from "@toolpad/core/PageContainer";
-import { Button, Box, Typography, Avatar } from "@mui/material";
+import { Button, Box, Avatar } from "@mui/material";
 
 import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
-import VpnKeyIcon from "@mui/icons-material/VpnKey";
 import LogoutIcon from "@mui/icons-material/Logout";
 import PhotoLibraryIcon from "@mui/icons-material/PhotoLibrary";
 
