@@ -75,6 +75,7 @@ const pictures = [
   { name: "Madam CEO", src: "/pictures/IMG-20251006-WA0005.jpg" },
   { name: "K.S kofar bai", src: "/pictures/IMG-20251006-WA0006.jpg" },
   { name: "Kwalliya ta biya kudin sabulu", src: "/pictures/IMG-20251006-WA0007.jpg" },
+  { name: "Madam CEO part 1", src: "/pictures/IMG-20250516-WA0045.jpg" },
 ]
 
 export default function App() {
