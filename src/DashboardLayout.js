@@ -1,6 +1,5 @@
-"use client";
+
 import * as React from "react";
-import { extendTheme } from "@mui/material/styles";
 import { AppProvider } from "@toolpad/core/AppProvider";
 import { DashboardLayout } from "@toolpad/core/DashboardLayout";
 import { PageContainer } from "@toolpad/core/PageContainer";
@@ -15,7 +14,6 @@ import PhotoLibraryIcon from "@mui/icons-material/PhotoLibrary";
 const NAVIGATION = [
   { kind: "header", title: "Main" },
   { segment: "videos", title: "Videos", icon: <VideoLibraryIcon /> },
-  { segment: "credentials", title: "Credentials", icon: <VpnKeyIcon /> },
   { segment: "pictures", title: "Pictures", icon: <PhotoLibraryIcon /> }
 ];
 
@@ -28,11 +26,7 @@ const BRANDING = {
       sx={{ width: 32, height: 32, mr: 1 }}
     />
   ),
-  title: (
-    <Typography variant="h6" fontWeight={700}>
-      Baby Sharp
-    </Typography>
-  ),
+  title: "Baby Sharp"
 };
 
 

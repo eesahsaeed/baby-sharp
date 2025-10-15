@@ -1,5 +1,5 @@
-"use client";
-import React, { useState } from "react";
+
+import { useState } from "react";
 import Masonry from "react-masonry-css";
 import {
   Card,
@@ -10,7 +10,6 @@ import {
   Typography,
   Modal,
   Box,
-  Stack,
   IconButton,
 } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";

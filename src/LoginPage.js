@@ -1,4 +1,4 @@
-"use client";
+
 import * as React from "react";
 import { CssBaseline, Sheet, Typography, FormControl, FormLabel, Input, Button, Select, Option, Alert, Box } from "@mui/joy";
 
