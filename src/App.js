@@ -31,12 +31,12 @@ const videos = [
   { name: "Zara sweet battle", src: "/videos/VID-20250609-WA0038.mp4" },
   { name: "madam 6 teeth part 2", src: "/videos/VID-20250610-WA0014.mp4" },
   { name: "Zara pillow fight", src: "/videos/VID-20250613-WA0009.mp4" },
-  { name: "madam 8 teeth debut", src: "/videos/VID-20250707-WA0000.mp4" },
-  { name: "madam 8 teeth part 1", src: "/videos/VID-20250710-WA0004.mp4" },
-  { name: "madam 8 teeth part 2", src: "/videos/VID-20250714-WA0004.mp4" },
+  { name: "madam 8 teeth debut (oho dei bata da hakora)", src: "/videos/VID-20250707-WA0000.mp4" },
+  { name: "madam 8 teeth part 1 (i am beautiful)", src: "/videos/VID-20250710-WA0004.mp4" },
+  { name: "madam 8 teeth part 2 (finding my good side)", src: "/videos/VID-20250714-WA0004.mp4" },
   { name: "madam 8 teeth part 3", src: "/videos/VID-20250719-WA0016.mp4" },
   { name: "madam 8 teeth part 4 (being damé'ed)", src: "/videos/VID-20250719-WA0017.mp4" },
-  { name: "madam 8 teeth part 5 (Taaaaaa edition)", src: "/videos/VID-20250725-WA0001.mp4" },
+  { name: "madam 8 teeth part 5 (You just have to keep shouting until they hear you out)", src: "/videos/VID-20250725-WA0001.mp4" },
   { name: "madam 8 teeth part 6", src: "/videos/VID-20250804-WA0005.mp4" },
   { name: "madam 8 teeth part 6 (royalty wake up)", src: "/videos/VID-20250807-WA0004.mp4" },
   { name: "madam 8 teeth part 6 (qiba edition)", src: "/videos/VID-20250808-WA0000.mp4" },
@@ -63,6 +63,7 @@ const credentials = [
 ]
 
 const pictures = [
+  { name: "Wonder Kid", src: "/logo.png" },
   { name: "Douche's", src: "/pictures/IMG-20250516-WA0005.jpg" },
   { name: "Zara birthday 1", src: "/pictures/IMG-20250522-WA0017.jpg" },
   { name: "Zara birthday 1_2", src: "/pictures/IMG-20250522-WA0018.jpg" },

@@ -11,12 +11,16 @@ import {
   Modal,
   Box,
   IconButton,
+  CircularProgress,
+  useMediaQuery,
 } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 export default function PicturesPage({ pictures = [] }) {
   const [selectedIndex, setSelectedIndex] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const isMobile = useMediaQuery("(max-width:600px)");
 
   const breakpointColumnsObj = {
     default: 4,
@@ -25,14 +29,20 @@ export default function PicturesPage({ pictures = [] }) {
     600: 1,
   };
 
-  const openModal = (index) => setSelectedIndex(index);
+  const openModal = (index) => {
+    setIsLoading(true);
+    setSelectedIndex(index);
+  };
+
   const closeModal = () => setSelectedIndex(null);
 
   const goPrevious = () => {
+    setIsLoading(true);
     setSelectedIndex((prev) => (prev > 0 ? prev - 1 : pictures.length - 1));
   };
 
   const goNext = () => {
+    setIsLoading(true);
     setSelectedIndex((prev) => (prev < pictures.length - 1 ? prev + 1 : 0));
   };
 
@@ -47,6 +57,7 @@ export default function PicturesPage({ pictures = [] }) {
         Pictures
       </Typography>
 
+      {/* Masonry grid */}
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"
@@ -59,7 +70,7 @@ export default function PicturesPage({ pictures = [] }) {
               borderRadius: 3,
               overflow: "hidden",
               boxShadow: 3,
-              mb: 2,
+              mb: 2
             }}
           >
             <CardMedia
@@ -72,7 +83,12 @@ export default function PicturesPage({ pictures = [] }) {
                 height: 220,
                 cursor: "pointer",
                 objectFit: "cover",
+                transition: "transform 0.3s ease",
+                "&:hover": {
+                  transform: "scale(1.03)",
+                },
               }}
+              loading="lazy"
             />
             <CardContent>
               <Typography variant="subtitle1" fontWeight={600}>
@@ -95,60 +111,121 @@ export default function PicturesPage({ pictures = [] }) {
       </Masonry>
 
       {/* ---------- Modal Preview ---------- */}
-      <Modal open={selectedIndex !== null} onClose={closeModal}>
+      <Modal
+        open={selectedIndex !== null}
+        onClose={closeModal}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          p: 2,
+        }}
+      >
         <Box
           sx={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
             bgcolor: "#000",
             borderRadius: 2,
             p: 2,
             outline: "none",
-            width: "90%",
+            width: isMobile ? "90vw" : "80vw",
+            height: isMobile ? "75vh" : "80vh",
             maxWidth: 900,
-            maxHeight: "90vh",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            justifyContent: "space-between",
+            boxShadow: 10,
+            marginTop: 10
           }}
         >
           {selectedIndex !== null && (
             <>
-              <Box sx={{ width: "100%", display: "flex", alignItems: "center" }}>
-                <IconButton onClick={goPrevious} sx={{ color: "white" }}>
+              <Box
+                sx={{
+                  width: "100%",
+                  flexGrow: 1,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  position: "relative",
+                  overflow: "hidden",
+                }}
+              >
+                <IconButton
+                  onClick={goPrevious}
+                  sx={{
+                    color: "white",
+                    position: "absolute",
+                    left: 8,
+                    zIndex: 2,
+                    backgroundColor: "rgba(0,0,0,0.3)",
+                    "&:hover": { backgroundColor: "rgba(0,0,0,0.5)" },
+                  }}
+                >
                   <ArrowBackIosIcon />
                 </IconButton>
+
+                {isLoading && (
+                  <CircularProgress
+                    sx={{ color: "white", position: "absolute" }}
+                  />
+                )}
 
                 <img
                   src={pictures[selectedIndex].src}
                   alt={pictures[selectedIndex].name}
+                  loading="lazy"
+                  onLoad={() => setIsLoading(false)}
                   style={{
                     width: "100%",
-                    borderRadius: 8,
-                    display: "block",
-                    maxHeight: "75vh",
+                    height: "100%",
                     objectFit: "contain",
+                    borderRadius: 8,
+                    opacity: isLoading ? 0 : 1,
+                    transition: "opacity 0.4s ease-in-out",
                   }}
                 />
 
-                <IconButton onClick={goNext} sx={{ color: "white" }}>
+                <IconButton
+                  onClick={goNext}
+                  sx={{
+                    color: "white",
+                    position: "absolute",
+                    right: 8,
+                    zIndex: 2,
+                    backgroundColor: "rgba(0,0,0,0.3)",
+                    "&:hover": { backgroundColor: "rgba(0,0,0,0.5)" },
+                  }}
+                >
                   <ArrowForwardIosIcon />
                 </IconButton>
               </Box>
 
-              <Typography mt={2} variant="h6" color="white">
-                {pictures[selectedIndex].name}
-              </Typography>
-              <Button
-                href={pictures[selectedIndex].src}
-                download={`${pictures[selectedIndex].name}.jpg`}
-                variant="contained"
-                sx={{ mt: 2 }}
+              {/* Footer */}
+              <Box
+                sx={{
+                  width: "100%",
+                  textAlign: "center",
+                  pt: 1,
+                  borderTop: "1px solid rgba(255,255,255,0.2)",
+                }}
               >
-                Download
-              </Button>
+                <Typography variant="h6" color="white">
+                  {pictures[selectedIndex].name}
+                </Typography>
+                <Button
+                  href={pictures[selectedIndex].src}
+                  download={`${pictures[selectedIndex].name}.jpg`}
+                  variant="contained"
+                  color="secondary"
+                  sx={{
+                    mt: 1,
+                    width: isMobile ? "100%" : "auto",
+                  }}
+                >
+                  Download
+                </Button>
+              </Box>
             </>
           )}
         </Box>
